@@ -12,7 +12,18 @@ def test_page_title():
         page = browser.new_page()
         page.goto(f"file://{cesta}")
         page.wait_for_load_state("load")  
+
         nadpis = page.locator("h1").first
+        w3odkaz = page.locator("#w3odkaz")
+
         expect(nadpis).to_be_visible()
+        expect(w3odkaz).to_be_visible()
+
+        expect(page.locator("p")).to_be_visible()
+        expect(page.locator(".container")).to_be_visible()
+        expect(page.locator("text=text nejaky")).to_be_visible()
+        expect(w3odkaz).to_be_visible()
+
+        w3odkaz.click()
 
         browser.close()
